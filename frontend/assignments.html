@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h2>Задания для курса</h2>
+    <a href="#">Назад</a>
+    <form method="post">
+        <label for="title">Название задания:</label><br>
+        <input type="text" name="title" required><br>
+        <label for="description">Описание:</label><br>
+        <textarea name="description" required></textarea><br>
+        <label for="due_date">Срок сдачи:</label><br>
+        <input type="date" name="due_date" required><br>
+        <input type="submit" value="Создать задание">
+    </form>
+    <ul>
+        {% for assignment in assignments %}
+            <li>
+                {{ assignment.title }} - {{ assignment.description }} (Срок: {{ assignment.due_date }})
+                <a href="/delete_assignment/{{ assignment.id }}">Удалить</a>
+                <a href="/grade_assignment/{{ assignment.id }}">Выставить оценку</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

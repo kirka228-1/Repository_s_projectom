@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выставить оценку</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h2>Выставить оценку за задание</h2>
+    <form method="post">
+        <label for="user_id">Студент:</label><br>
+        <select name="user_id" required>
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="grade">Оценка:</label><br>
+        <input type="number" name="grade" step="0.1" min="0" max="5" required><br>
+        <input type="submit" value="Выставить оценку">
+    </form>
+</body>
+</html>
